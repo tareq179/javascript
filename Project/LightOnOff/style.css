@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.main-heading{
+    height: 100vh;
+    background-color: #303366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+.main-heading h1{
+    margin-bottom: 20px;
+}
+button{
+    display: inline-block;
+    background-color: #f8b627;
+    color: #f4f4f4;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    border-radius: 3px;
+    transition: 400ms;
+    text-decoration: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 999;
+}
