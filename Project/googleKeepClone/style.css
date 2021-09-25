@@ -5,7 +5,7 @@
     outline: none;
 }
 body{
-    border-color: #f4f7f8;
+    background-color: #dededf;
     display: flex;
     flex-wrap: wrap;
 }
@@ -114,13 +114,13 @@ button:hover .button-text{
 
 /* button style end */
 .note{
-    background: #fff;
+    background-color: #fff;
     margin: 30px 20px;
     height: 200px;
     width: 400px;
     overflow-y: scroll;
     margin-top: 7rem;
-    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1) inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 .note .tools{
     display: flex;

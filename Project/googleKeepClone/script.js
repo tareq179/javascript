@@ -1,30 +1,68 @@
 const addButton = document.querySelector('#add');
 
+const updateLSData = () =>{
+    const textAreaData = document.querySelectorAll('textarea');
+    const notes = [];
+
+    textAreaData.forEach((note)=>{
+        return notes.push(note.value);
+    })
+    localStorage.setItem('notes', JSON.stringify(notes));
+}
+
 const addNewNote = (text = '') =>{
 
     const note = document.createElement('div');
     note.classList.add('note');
 
     const htmlData = `
-        <div className="operation">
-            <button className="edit"><i className="fas fa-edit"></i></button>
-            <button className="delete"><i className="fas fa-trash-alt"></i></button>
+        <div class="tools">
+            <button class="edit"><i class="fas fa-edit"></i></button>
+            <button class="delete"><i class="fas fa-trash-alt"></i></button>
         </div>
-        <div className="main"></div>
-        <textarea className=""></textarea>
+        <div class="main ${text ? "" : "hidden"}"></div>
+        <textarea class="${text ? "hidden" : ""}"></textarea>
     `;
     note.insertAdjacentHTML('afterbegin',htmlData);
+    console.log(note);
 
+    // getting the Reference
     const editButton = note.querySelector('.edit');
     const delButton = note.querySelector('.delete');
     const mainDiv = note.querySelector('.main');
     const textarea = note.querySelector('textarea');
 
-    delButton.addEventListener('click', ()=>{
+    //deleting button
+    delButton.addEventListener('click', ()=> {
         note.remove();
+        updateLSData();
+    })
+
+    //toggle using edit button
+    textarea.value = text;
+    mainDiv.innerHTML = text;
+
+    //editing button
+    editButton.addEventListener('click', () =>{
+        mainDiv.classList.toggle('hidden');
+        textarea.classList.toggle('hidden');
+    })
+
+    textarea.addEventListener('change', (event) =>{
+        const value = event.target.value;
+        mainDiv.innerHTML = value;
+
+        updateLSData();
     })
 
     document.body.appendChild(note);
+}
+
+//getData from localStorage
+const notes = JSON.parse(localStorage.getItem('notes'));
+
+if (notes) {
+    notes.forEach((note)=> addNewNote(note))
 }
 
 addButton.addEventListener('click', () => addNewNote())
